@@ -153,11 +153,6 @@ impl fmt::Display for WordleState {
 
 pub fn worlde_game_make_guess(guess: &str, state: &mut WordleState) {
     let turn = state.guesses.iter().position(|guess| guess.is_none());
-    match turn {
-        Some(t) => println!("Current turn index: {}", t),
-        None => println!("Game is over"),
-    }
-
     if turn.is_some() {
         let turn = turn.unwrap();
         state.set_guess(turn, str_to_five_char(guess));

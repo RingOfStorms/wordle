@@ -14,3 +14,8 @@ Guess commands are character sequences you can guess to do additional behavior.
 |command|description|
 |---|---|
 |!ans[wer]|shows the answer to the current wordle|
+
+
+## Screenshots
+
+![gif of wordle in terminal](images/wordle_rust.gif)

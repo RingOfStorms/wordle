@@ -9,6 +9,7 @@ mod wordle;
 
 use utils::str_unique_by_characters;
 use wordle::{worlde_game_make_guess, WordleState};
+use crate::utils::clear_screen;
 
 fn generate_wordle_dictionary() -> HashSet<String> {
     let existing_path = "./dictionaries/output/five_letter_words.txt";
@@ -90,10 +91,12 @@ fn main() {
         .filter(|x| str_unique_by_characters(x))
         .map(|w| w)
         .collect();
-    let worlde_answer = unique_words.choose(&mut rand::thread_rng()).unwrap();
+    let worlde_answer = String::from("EXAMS"); //unique_words.choose(&mut rand::thread_rng()).unwrap();
 
     let mut wordle_game_state = WordleState::new(worlde_answer.as_str());
 
+
+     clear_screen();
     loop {
         let mut input;
 
@@ -112,6 +115,7 @@ fn main() {
         }
 
         worlde_game_make_guess(input.as_ref(), &mut wordle_game_state);
+        clear_screen();
         print!("Board:\n{}", wordle_game_state);
         if wordle_game_state.game_over() {
             break;
